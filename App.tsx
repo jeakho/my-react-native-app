@@ -71,26 +71,51 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
-        <View
+        <Text>Raleway, 100, normal:</Text>
+        <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
+          Hello world!
+        </Text>
+        <Text>System, 100, normal:</Text>
+        <Text style={{fontWeight: '100', fontSize: 60}}>Hello world!</Text>
+        <Text>Raleway, 400, italic:</Text>
+        <Text
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            fontFamily: 'Raleway',
+            fontWeight: '400',
+            fontSize: 60,
+            fontStyle: 'italic',
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
+          Hello world!
+        </Text>
+        <Text>System, 400, italic:</Text>
+        <Text style={{fontWeight: '400', fontStyle: 'italic', fontSize: 60}}>
+          Hello world!
+        </Text>
+        <Text>Raleway, 900, normal:</Text>
+        <Text
+          style={{
+            fontFamily: 'Raleway',
+            fontWeight: '900',
+            fontSize: 60,
+          }}>
+          Hello world!
+        </Text>
+        <Text>System, 900, normal:</Text>
+        <Text style={{fontWeight: '900', fontSize: 60}}>Hello world!</Text>
+        <Text>Raleway, 900, italic:</Text>
+        <Text
+          style={{
+            fontFamily: 'Raleway',
+            fontWeight: '900',
+            fontSize: 60,
+            fontStyle: 'italic',
+          }}>
+          Hello world!
+        </Text>
+        <Text>System, 900, italic:</Text>
+        <Text style={{fontWeight: '900', fontSize: 60, fontStyle: 'italic'}}>
+          Hello world!
+        </Text>
       </ScrollView>
     </SafeAreaView>
   );
