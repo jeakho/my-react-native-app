@@ -29,6 +29,7 @@ import TigerSvg from './assets/tiger.svg'
 import GiraffeSvg from './assets/giraffe.svg'
 
 import LinearGradient from 'react-native-linear-gradient';
+import MaskedView from '@react-native-masked-view/masked-view';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -68,11 +69,11 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <LinearGradient
-        colors={['#000046', '#1CB5E0']}
-        start={{x: 0, y: 0}} end={{x: 1, y: 1}}
-        style={styles.linearGradient}
-    >
+//     <LinearGradient
+//         colors={['#000046', '#1CB5E0']}
+//         start={{x: 0, y: 0}} end={{x: 1, y: 1}}
+//         style={styles.linearGradient}
+//     >
         <SafeAreaView style={backgroundStyle}>
           <StatusBar
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -84,6 +85,42 @@ function App(): React.JSX.Element {
 
             <TigerSvg width={100} height={100}></TigerSvg>
             <GiraffeSvg  width={100} height={100}></GiraffeSvg>
+
+
+
+            <MaskedView
+              style={{height: 100, alignSelf: 'stretch'}}
+              maskElement={ 
+                <View
+                style={{
+                  backgroundColor: 'transparent',
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 60,
+                    color: 'black',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Basic Mask
+                </Text>
+                </View>
+              }>
+              <LinearGradient
+                colors={['#333333', '#dd1818']}
+                start={{x: 0, y: 0}} end={{x: 1, y: 0}}
+                style={{flex: 1}}
+              >
+              </LinearGradient>
+            </MaskedView>
+
+
+
+
 
             <Text>Raleway, 100, normal:</Text>
             <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
@@ -132,11 +169,16 @@ function App(): React.JSX.Element {
             </Text>
           </ScrollView>
         </SafeAreaView>
-    </LinearGradient>
+//     </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  maskedGradient: {
+    alignSelf: 'stretch',
+    height: 100
+  },
+
   linearGradient: {
     flex: 1,
     paddingLeft: 15,
