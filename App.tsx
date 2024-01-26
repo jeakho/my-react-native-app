@@ -28,6 +28,8 @@ import {
 import TigerSvg from './assets/tiger.svg'
 import GiraffeSvg from './assets/giraffe.svg'
 
+import LinearGradient from 'react-native-linear-gradient';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -66,69 +68,81 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+    <LinearGradient
+        colors={['#000046', '#1CB5E0']}
+        start={{x: 0, y: 0}} end={{x: 1, y: 1}}
+        style={styles.linearGradient}
+    >
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={backgroundStyle}>
 
-        <TigerSvg width={100} height={100}></TigerSvg>
-        <GiraffeSvg  width={100} height={100}></GiraffeSvg>
+            <TigerSvg width={100} height={100}></TigerSvg>
+            <GiraffeSvg  width={100} height={100}></GiraffeSvg>
 
-        <Text>Raleway, 100, normal:</Text>
-        <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
-          Hello world!
-        </Text>
-        <Text>System, 100, normal:</Text>
-        <Text style={{fontWeight: '100', fontSize: 60}}>Hello world!</Text>
-        <Text>Raleway, 400, italic:</Text>
-        <Text
-          style={{
-            fontFamily: 'Raleway',
-            fontWeight: '400',
-            fontSize: 60,
-            fontStyle: 'italic',
-          }}>
-          Hello world!
-        </Text>
-        <Text>System, 400, italic:</Text>
-        <Text style={{fontWeight: '400', fontStyle: 'italic', fontSize: 60}}>
-          Hello world!
-        </Text>
-        <Text>Raleway, 900, normal:</Text>
-        <Text
-          style={{
-            fontFamily: 'Raleway',
-            fontWeight: '900',
-            fontSize: 60,
-          }}>
-          Hello world!
-        </Text>
-        <Text>System, 900, normal:</Text>
-        <Text style={{fontWeight: '900', fontSize: 60}}>Hello world!</Text>
-        <Text>Raleway, 900, italic:</Text>
-        <Text
-          style={{
-            fontFamily: 'Raleway',
-            fontWeight: '900',
-            fontSize: 60,
-            fontStyle: 'italic',
-          }}>
-          Hello world!
-        </Text>
-        <Text>System, 900, italic:</Text>
-        <Text style={{fontWeight: '900', fontSize: 60, fontStyle: 'italic'}}>
-          Hello world!
-        </Text>
-      </ScrollView>
-    </SafeAreaView>
+            <Text>Raleway, 100, normal:</Text>
+            <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
+              Hello world!
+            </Text>
+            <Text>System, 100, normal:</Text>
+            <Text style={{fontWeight: '100', fontSize: 60}}>Hello world!</Text>
+            <Text>Raleway, 400, italic:</Text>
+            <Text
+              style={{
+                fontFamily: 'Raleway',
+                fontWeight: '400',
+                fontSize: 60,
+                fontStyle: 'italic',
+              }}>
+              Hello world!
+            </Text>
+            <Text>System, 400, italic:</Text>
+            <Text style={{fontWeight: '400', fontStyle: 'italic', fontSize: 60}}>
+              Hello world!
+            </Text>
+            <Text>Raleway, 900, normal:</Text>
+            <Text
+              style={{
+                fontFamily: 'Raleway',
+                fontWeight: '900',
+                fontSize: 60,
+              }}>
+              Hello world!
+            </Text>
+            <Text>System, 900, normal:</Text>
+            <Text style={{fontWeight: '900', fontSize: 60}}>Hello world!</Text>
+            <Text>Raleway, 900, italic:</Text>
+            <Text
+              style={{
+                fontFamily: 'Raleway',
+                fontWeight: '900',
+                fontSize: 60,
+                fontStyle: 'italic',
+              }}>
+              Hello world!
+            </Text>
+            <Text>System, 900, italic:</Text>
+            <Text style={{fontWeight: '900', fontSize: 60, fontStyle: 'italic'}}>
+              Hello world!
+            </Text>
+          </ScrollView>
+        </SafeAreaView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
