@@ -25,6 +25,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import TigerSvg from './assets/tiger.svg'
+import GiraffeSvg from './assets/giraffe.svg'
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -71,6 +74,10 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+
+        <TigerSvg width={100} height={100}></TigerSvg>
+        <GiraffeSvg  width={100} height={100}></GiraffeSvg>
+
         <Text>Raleway, 100, normal:</Text>
         <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
           Hello world!
