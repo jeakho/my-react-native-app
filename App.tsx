@@ -8,6 +8,7 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -30,146 +31,129 @@ import GiraffeSvg from './assets/giraffe.svg'
 
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function FirstPage({ navigation }: any): React.JSX.Element {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
+    <ScrollView>
+      <View
+        style={{ width: 200, marginTop: 10, alignSelf: 'center' }}
+      >
+        <Button
+          title="Go to Second page"
+          onPress={() => navigation.navigate('Second')}
+        />
+      </View>
+      <TigerSvg width={100} height={100}></TigerSvg>
+      <GiraffeSvg  width={100} height={100}></GiraffeSvg>
+
+      <MaskedView
+        style={{height: 100, alignSelf: 'stretch'}}
+        maskElement={ 
+          <View
+          style={{
+            backgroundColor: 'transparent',
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 60,
+              color: 'black',
+              fontWeight: 'bold',
+            }}
+          >
+            Basic Mask
+          </Text>
+          </View>
+        }>
+        <LinearGradient
+          colors={['#333333', '#dd1818']}
+          start={{x: 0, y: 0}} end={{x: 1, y: 0}}
+          style={{flex: 1}}
+        >
+        </LinearGradient>
+      </MaskedView>
+
+      <Text>Raleway, 100, normal:</Text>
+      <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
+        Hello world!
       </Text>
+      <Text>System, 100, normal:</Text>
+      <Text style={{fontWeight: '100', fontSize: 60}}>Hello world!</Text>
+      <Text>Raleway, 400, italic:</Text>
       <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
+        style={{
+          fontFamily: 'Raleway',
+          fontWeight: '400',
+          fontSize: 60,
+          fontStyle: 'italic',
+        }}>
+        Hello world!
       </Text>
-    </View>
-  );
+      <Text>System, 400, italic:</Text>
+      <Text style={{fontWeight: '400', fontStyle: 'italic', fontSize: 60}}>
+        Hello world!
+      </Text>
+      <Text>Raleway, 900, normal:</Text>
+      <Text
+        style={{
+          fontFamily: 'Raleway',
+          fontWeight: '900',
+          fontSize: 60,
+        }}>
+        Hello world!
+      </Text>
+      <Text>System, 900, normal:</Text>
+      <Text style={{fontWeight: '900', fontSize: 60}}>Hello world!</Text>
+      <Text>Raleway, 900, italic:</Text>
+      <Text
+        style={{
+          fontFamily: 'Raleway',
+          fontWeight: '900',
+          fontSize: 60,
+          fontStyle: 'italic',
+        }}>
+        Hello world!
+      </Text>
+      <Text>System, 900, italic:</Text>
+      <Text style={{fontWeight: '900', fontSize: 60, fontStyle: 'italic'}}>
+        Hello world!
+      </Text>
+    </ScrollView>
+  )
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+function SecondPage({ navigation }: any): React.JSX.Element {
   return (
-//     <LinearGradient
-//         colors={['#000046', '#1CB5E0']}
-//         start={{x: 0, y: 0}} end={{x: 1, y: 1}}
-//         style={styles.linearGradient}
-//     >
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={backgroundStyle}>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Hello second page!</Text>
+      <View
+        style={{ width: 200, marginTop: 10, alignSelf: 'center' }}
+      >
+        <Button
+          title="Go to First page"
+          onPress={() => navigation.navigate('First')}
+        />
+      </View>
+    </View>
+  )
+}
 
-            <TigerSvg width={100} height={100}></TigerSvg>
-            <GiraffeSvg  width={100} height={100}></GiraffeSvg>
+const Stack = createNativeStackNavigator();
 
-
-
-            <MaskedView
-              style={{height: 100, alignSelf: 'stretch'}}
-              maskElement={ 
-                <View
-                style={{
-                  backgroundColor: 'transparent',
-                  flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 60,
-                    color: 'black',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Basic Mask
-                </Text>
-                </View>
-              }>
-              <LinearGradient
-                colors={['#333333', '#dd1818']}
-                start={{x: 0, y: 0}} end={{x: 1, y: 0}}
-                style={{flex: 1}}
-              >
-              </LinearGradient>
-            </MaskedView>
-
-
-
-
-
-            <Text>Raleway, 100, normal:</Text>
-            <Text style={{fontFamily: 'Raleway', fontWeight: '100', fontSize: 60}}>
-              Hello world!
-            </Text>
-            <Text>System, 100, normal:</Text>
-            <Text style={{fontWeight: '100', fontSize: 60}}>Hello world!</Text>
-            <Text>Raleway, 400, italic:</Text>
-            <Text
-              style={{
-                fontFamily: 'Raleway',
-                fontWeight: '400',
-                fontSize: 60,
-                fontStyle: 'italic',
-              }}>
-              Hello world!
-            </Text>
-            <Text>System, 400, italic:</Text>
-            <Text style={{fontWeight: '400', fontStyle: 'italic', fontSize: 60}}>
-              Hello world!
-            </Text>
-            <Text>Raleway, 900, normal:</Text>
-            <Text
-              style={{
-                fontFamily: 'Raleway',
-                fontWeight: '900',
-                fontSize: 60,
-              }}>
-              Hello world!
-            </Text>
-            <Text>System, 900, normal:</Text>
-            <Text style={{fontWeight: '900', fontSize: 60}}>Hello world!</Text>
-            <Text>Raleway, 900, italic:</Text>
-            <Text
-              style={{
-                fontFamily: 'Raleway',
-                fontWeight: '900',
-                fontSize: 60,
-                fontStyle: 'italic',
-              }}>
-              Hello world!
-            </Text>
-            <Text>System, 900, italic:</Text>
-            <Text style={{fontWeight: '900', fontSize: 60, fontStyle: 'italic'}}>
-              Hello world!
-            </Text>
-          </ScrollView>
-        </SafeAreaView>
-//     </LinearGradient>
+function App(): React.JSX.Element {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="First">
+        <Stack.Screen name='First' component={FirstPage}></Stack.Screen>
+        <Stack.Screen name='Second' component={SecondPage}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
