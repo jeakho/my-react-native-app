@@ -34,6 +34,11 @@ import MaskedView from '@react-native-masked-view/masked-view';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Config from "react-native-config";
+
+console.log(Config.API_URL); // 'https://myapi.com'
+console.log(Config.GOOGLE_MAPS_API_KEY); // 'abcdefgh'
+
 function FirstPage({ navigation }: any): React.JSX.Element {
   return (
     <ScrollView>
